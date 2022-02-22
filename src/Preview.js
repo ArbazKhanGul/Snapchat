@@ -28,6 +28,7 @@ const dispatch=useDispatch();
 const user=useSelector(selectUser);
 
 useEffect(()=>{
+// console.log(user);
     if(!cameraImage){
         navigate('/', { replace: false })
     }
@@ -48,7 +49,7 @@ uploadTask.on("state_changed",null,(error)=>{
      .then((url)=>{
          db.collection("posts").add({
              imageUrl:url,
-             username:"Arbaz Khan",
+             username:user.username,
              profilePic:user.profilePic,
              read:false,
              timestamp:firebase.firestore.FieldValue.serverTimestamp()
